@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechBacked</title>
+  <link rel="icon" type="image/png" href="techbacked_black.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f5f5;
+      --gray: #888;
+      --accent: #f5f5f5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .nav-logo img { width: 32px; height: 32px; }
+
+    .nav-logo span {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--white);
+      color: var(--black) !important;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: #ddd; color: var(--black) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 40px;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-badge span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4ade80;
+      display: inline-block;
+    }
+
+    .hero-logo {
+      width: 96px;
+      height: 96px;
+      margin-bottom: 40px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 80px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gray);
+    }
+
+    .hero p {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--gray);
+      max-width: 520px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: #ddd; transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.4); transform: translateY(-1px); }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin: 0;
+    }
+
+    /* SECTION */
+    section {
+      padding: 96px 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .section-sub {
+      font-size: 18px;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 64px;
+    }
+
+    /* FEATURES GRID */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 36px;
+      transition: background 0.2s;
+    }
+
+    .feature-card:hover { background: rgba(255,255,255,0.05); }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* STATS */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2px;
+      margin-top: 0;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 40px 36px;
+    }
+
+    .stat-value {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      max-width: 1080px;
+      margin: 0 auto 96px;
+      padding: 0 24px;
+    }
+
+    .cta-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 80px 48px;
+      text-align: center;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .cta-box p {
+      font-size: 18px;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    .footer-logo img { width: 24px; height: 24px; }
+
+    footer p {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    footer a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--white); }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      footer { padding: 32px 20px; }
+      .cta-box { padding: 48px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <img src="techbacked_white.png" alt="TechBacked logo" />
+      <span>TechBacked</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#what-we-do">What we do</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="mailto:meesam@techbacked.ai" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge"><span></span> Building the future of tech</div>
+    <img src="techbacked_white.png" alt="TechBacked" class="hero-logo" />
+    <h1>Technology<br /><em>that moves fast</em></h1>
+    <p>TechBacked builds products and ventures at the intersection of software, AI, and ambition.</p>
+    <div class="hero-actions">
+      <a href="mailto:meesam@techbacked.ai" class="btn-primary">Work with us</a>
+      <a href="#what-we-do" class="btn-secondary">Learn more</a>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- WHAT WE DO -->
+  <section id="what-we-do">
+    <p class="section-label">What we do</p>
+    <h2 class="section-title">Built for builders.</h2>
+    <p class="section-sub">We design, develop, and ship technology products — from idea to production.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Product Development</h3>
+        <p>End-to-end software development from architecture to deployment. We move fast without breaking things.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Integration</h3>
+        <p>Practical AI implementation into your workflows, products, and pipelines — not just hype.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <h3>Venture Building</h3>
+        <p>We co-found and launch new ventures from scratch. Technology is the foundation, ambition is the fuel.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <h2 class="section-title">Backed by tech.<br />Driven by results.</h2>
+    <p class="section-sub">TechBacked is founded by Meesam Gardezi — engineer, builder, and founder.</p>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-value">01</div>
+        <div class="stat-label">Focused team, zero bloat</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">∞</div>
+        <div class="stat-label">Ideas worth building</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">AI</div>
+        <div class="stat-label">First approach to everything</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-box">
+      <h2>Let's build something.</h2>
+      <p>Have a project, idea, or venture? Let's talk.</p>
+      <a href="mailto:meesam@techbacked.ai" class="btn-primary">meesam@techbacked.ai</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="/" class="footer-logo">
+      <img src="techbacked_white.png" alt="TechBacked" />
+      TechBacked
+    </a>
+    <p>© 2026 TechBacked. All rights reserved.</p>
+    <div style="display:flex;gap:24px;">
+      <a href="https://meesamgardezi.com">meesamgardezi.com</a>
+      <a href="mailto:meesam@techbacked.ai">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
