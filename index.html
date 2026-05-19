@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,38 +8,76 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --black: #0a0a0a;
-      --white: #f5f5f5;
-      --gray: #888;
-      --accent: #f5f5f5;
+    /* ── THEME TOKENS ── */
+    :root, [data-theme="dark"] {
+      --bg:           #0a0a0a;
+      --bg-nav:       rgba(10, 10, 10, 0.85);
+      --bg-card:      rgba(255, 255, 255, 0.03);
+      --bg-card-hov:  rgba(255, 255, 255, 0.05);
+      --bg-stat:      rgba(255, 255, 255, 0.02);
+      --bg-icon:      rgba(255, 255, 255, 0.08);
+      --border:       rgba(255, 255, 255, 0.06);
+      --border-card:  rgba(255, 255, 255, 0.06);
+      --border-btn:   rgba(255, 255, 255, 0.15);
+      --border-btn-hov: rgba(255, 255, 255, 0.4);
+      --border-badge: rgba(255, 255, 255, 0.12);
+      --glow:         rgba(255, 255, 255, 0.04);
+      --fg:           #f5f5f5;
+      --fg-muted:     #888;
+      --btn-bg:       #f5f5f5;
+      --btn-bg-hov:   #ddd;
+      --btn-fg:       #0a0a0a;
+      --logo-src:     url("techbacked_white.png");
+      --toggle-icon:  "☀️";
+    }
+
+    [data-theme="light"] {
+      --bg:           #f7f7f5;
+      --bg-nav:       rgba(247, 247, 245, 0.88);
+      --bg-card:      rgba(0, 0, 0, 0.03);
+      --bg-card-hov:  rgba(0, 0, 0, 0.05);
+      --bg-stat:      rgba(0, 0, 0, 0.02);
+      --bg-icon:      rgba(0, 0, 0, 0.07);
+      --border:       rgba(0, 0, 0, 0.07);
+      --border-card:  rgba(0, 0, 0, 0.08);
+      --border-btn:   rgba(0, 0, 0, 0.15);
+      --border-btn-hov: rgba(0, 0, 0, 0.4);
+      --border-badge: rgba(0, 0, 0, 0.1);
+      --glow:         rgba(0, 0, 0, 0.03);
+      --fg:           #0a0a0a;
+      --fg-muted:     #666;
+      --btn-bg:       #0a0a0a;
+      --btn-bg-hov:   #333;
+      --btn-fg:       #f5f5f5;
+      --logo-src:     url("techbacked_black.png");
+      --toggle-icon:  "🌙";
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--black);
-      color: var(--white);
+      background: var(--bg);
+      color: var(--fg);
       font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
       font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      transition: background 0.25s, color 0.25s;
     }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 20px 48px;
-      background: rgba(10, 10, 10, 0.85);
+      background: var(--bg-nav);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.25s, border-color 0.25s;
     }
 
     .nav-logo {
@@ -47,7 +85,7 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
-      color: var(--white);
+      color: var(--fg);
     }
 
     .nav-logo img { width: 32px; height: 32px; }
@@ -58,14 +96,21 @@
       letter-spacing: -0.02em;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 36px;
       list-style: none;
     }
 
     .nav-links a {
-      color: var(--gray);
+      color: var(--fg-muted);
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
@@ -73,19 +118,47 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover { color: var(--fg); }
 
     .nav-cta {
-      background: var(--white);
-      color: var(--black) !important;
+      background: var(--btn-bg) !important;
+      color: var(--btn-fg) !important;
       padding: 8px 20px;
       border-radius: 6px;
       font-weight: 600 !important;
+      transition: background 0.2s !important;
     }
 
-    .nav-cta:hover { background: #ddd; color: var(--black) !important; }
+    .nav-cta:hover { background: var(--btn-bg-hov) !important; }
 
-    /* HERO */
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border-btn);
+      border-radius: 8px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: border-color 0.2s, background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--border-btn-hov);
+      background: var(--bg-card);
+    }
+
+    /* ── LOGO IMG swap ── */
+    .logo-dark { display: block; }
+    .logo-light { display: none; }
+    [data-theme="light"] .logo-dark { display: none; }
+    [data-theme="light"] .logo-light { display: block; }
+
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -103,7 +176,7 @@
       position: absolute;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -114,11 +187,11 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid var(--border-badge);
       border-radius: 100px;
       padding: 6px 16px;
       font-size: 13px;
-      color: var(--gray);
+      color: var(--fg-muted);
       margin-bottom: 40px;
       letter-spacing: 0.03em;
     }
@@ -131,11 +204,7 @@
       display: inline-block;
     }
 
-    .hero-logo {
-      width: 96px;
-      height: 96px;
-      margin-bottom: 40px;
-    }
+    .hero-logo { width: 96px; height: 96px; margin-bottom: 40px; }
 
     .hero h1 {
       font-size: clamp(40px, 7vw, 80px);
@@ -146,14 +215,11 @@
       margin-bottom: 24px;
     }
 
-    .hero h1 em {
-      font-style: normal;
-      color: var(--gray);
-    }
+    .hero h1 em { font-style: normal; color: var(--fg-muted); }
 
     .hero p {
       font-size: clamp(16px, 2vw, 20px);
-      color: var(--gray);
+      color: var(--fg-muted);
       max-width: 520px;
       margin-bottom: 48px;
       line-height: 1.7;
@@ -167,8 +233,8 @@
     }
 
     .btn-primary {
-      background: var(--white);
-      color: var(--black);
+      background: var(--btn-bg);
+      color: var(--btn-fg);
       padding: 14px 32px;
       border-radius: 8px;
       font-size: 15px;
@@ -177,30 +243,30 @@
       transition: background 0.2s, transform 0.15s;
     }
 
-    .btn-primary:hover { background: #ddd; transform: translateY(-1px); }
+    .btn-primary:hover { background: var(--btn-bg-hov); transform: translateY(-1px); }
 
     .btn-secondary {
       background: transparent;
-      color: var(--white);
+      color: var(--fg);
       padding: 14px 32px;
       border-radius: 8px;
       font-size: 15px;
       font-weight: 500;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid var(--border-btn);
       transition: border-color 0.2s, transform 0.15s;
     }
 
-    .btn-secondary:hover { border-color: rgba(255,255,255,0.4); transform: translateY(-1px); }
+    .btn-secondary:hover { border-color: var(--border-btn-hov); transform: translateY(-1px); }
 
-    /* DIVIDER */
+    /* ── DIVIDER ── */
     .divider {
       border: none;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid var(--border);
       margin: 0;
     }
 
-    /* SECTION */
+    /* ── SECTIONS ── */
     section {
       padding: 96px 24px;
       max-width: 1080px;
@@ -212,7 +278,7 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gray);
+      color: var(--fg-muted);
       margin-bottom: 16px;
     }
 
@@ -226,34 +292,34 @@
 
     .section-sub {
       font-size: 18px;
-      color: var(--gray);
+      color: var(--fg-muted);
       max-width: 560px;
       line-height: 1.7;
       margin-bottom: 64px;
     }
 
-    /* FEATURES GRID */
+    /* ── FEATURES GRID ── */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2px;
+      gap: 12px;
     }
 
     .feature-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
       border-radius: 12px;
       padding: 36px;
       transition: background 0.2s;
     }
 
-    .feature-card:hover { background: rgba(255,255,255,0.05); }
+    .feature-card:hover { background: var(--bg-card-hov); }
 
     .feature-icon {
       width: 40px;
       height: 40px;
       border-radius: 10px;
-      background: rgba(255,255,255,0.08);
+      background: var(--bg-icon);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -268,23 +334,18 @@
       margin-bottom: 10px;
     }
 
-    .feature-card p {
-      font-size: 14px;
-      color: var(--gray);
-      line-height: 1.7;
-    }
+    .feature-card p { font-size: 14px; color: var(--fg-muted); line-height: 1.7; }
 
-    /* STATS */
+    /* ── STATS ── */
     .stats-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2px;
-      margin-top: 0;
+      gap: 12px;
     }
 
     .stat-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: var(--bg-stat);
+      border: 1px solid var(--border-card);
       border-radius: 12px;
       padding: 40px 36px;
     }
@@ -297,12 +358,9 @@
       margin-bottom: 8px;
     }
 
-    .stat-label {
-      font-size: 14px;
-      color: var(--gray);
-    }
+    .stat-label { font-size: 14px; color: var(--fg-muted); }
 
-    /* CTA SECTION */
+    /* ── CTA ── */
     .cta-section {
       max-width: 1080px;
       margin: 0 auto 96px;
@@ -310,8 +368,8 @@
     }
 
     .cta-box {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
       border-radius: 20px;
       padding: 80px 48px;
       text-align: center;
@@ -324,15 +382,11 @@
       margin-bottom: 16px;
     }
 
-    .cta-box p {
-      font-size: 18px;
-      color: var(--gray);
-      margin-bottom: 40px;
-    }
+    .cta-box p { font-size: 18px; color: var(--fg-muted); margin-bottom: 40px; }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid var(--border);
       padding: 40px 48px;
       display: flex;
       align-items: center;
@@ -346,27 +400,24 @@
       align-items: center;
       gap: 10px;
       text-decoration: none;
-      color: var(--gray);
+      color: var(--fg-muted);
       font-size: 14px;
     }
 
     .footer-logo img { width: 24px; height: 24px; }
 
-    footer p {
-      font-size: 13px;
-      color: var(--gray);
-    }
+    footer p { font-size: 13px; color: var(--fg-muted); }
 
     footer a {
-      color: var(--gray);
+      color: var(--fg-muted);
       text-decoration: none;
       font-size: 13px;
       transition: color 0.2s;
     }
 
-    footer a:hover { color: var(--white); }
+    footer a:hover { color: var(--fg); }
 
-    /* RESPONSIVE */
+    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
@@ -380,20 +431,27 @@
   <!-- NAV -->
   <nav>
     <a href="/" class="nav-logo">
-      <img src="techbacked_white.png" alt="TechBacked logo" />
+      <img src="techbacked_white.png" alt="TechBacked logo" class="logo-dark" />
+      <img src="techbacked_black.png" alt="TechBacked logo" class="logo-light" />
       <span>TechBacked</span>
     </a>
-    <ul class="nav-links">
-      <li><a href="#what-we-do">What we do</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="mailto:meesam@techbacked.ai" class="nav-cta">Get in touch</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#what-we-do">What we do</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="mailto:meesam@techbacked.ai" class="nav-cta">Get in touch</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+        <span id="themeIcon">☀️</span>
+      </button>
+    </div>
   </nav>
 
   <!-- HERO -->
   <div class="hero">
     <div class="hero-badge"><span></span> Building the future of tech</div>
-    <img src="techbacked_white.png" alt="TechBacked" class="hero-logo" />
+    <img src="techbacked_white.png" alt="TechBacked" class="hero-logo logo-dark" />
+    <img src="techbacked_black.png" alt="TechBacked" class="hero-logo logo-light" />
     <h1>Technology<br /><em>that moves fast</em></h1>
     <p>TechBacked builds products and ventures at the intersection of software, AI, and ambition.</p>
     <div class="hero-actions">
@@ -465,7 +523,8 @@
   <!-- FOOTER -->
   <footer>
     <a href="/" class="footer-logo">
-      <img src="techbacked_white.png" alt="TechBacked" />
+      <img src="techbacked_white.png" alt="TechBacked" class="logo-dark" />
+      <img src="techbacked_black.png" alt="TechBacked" class="logo-light" />
       TechBacked
     </a>
     <p>© 2026 TechBacked. All rights reserved.</p>
@@ -474,6 +533,29 @@
       <a href="mailto:meesam@techbacked.ai">Contact</a>
     </div>
   </footer>
+
+  <script>
+    const html = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+
+    const DARK = 'dark';
+    const LIGHT = 'light';
+
+    function applyTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      icon.textContent = theme === DARK ? '☀️' : '🌙';
+      localStorage.setItem('theme', theme);
+    }
+
+    // Init: respect saved preference, otherwise default to dark
+    const saved = localStorage.getItem('theme');
+    applyTheme(saved === LIGHT ? LIGHT : DARK);
+
+    btn.addEventListener('click', () => {
+      applyTheme(html.getAttribute('data-theme') === DARK ? LIGHT : DARK);
+    });
+  </script>
 
 </body>
 </html>
