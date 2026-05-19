@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TechBacked — Working Towards a Tech Backed Future</title>
+  <meta name="description" content="TechBacked builds, invests in, and accelerates technology companies. From first line of code to market leadership." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -12,51 +13,58 @@
 
     /* ── THEME ── */
     :root, [data-theme="dark"] {
-      --bg:            #080808;
-      --bg-2:          #111111;
-      --bg-nav:        rgba(8, 8, 8, 0.9);
-      --bg-card:       #141414;
-      --bg-card-hov:   #1a1a1a;
-      --border:        #1f1f1f;
-      --border-subtle: #181818;
-      --fg:            #f0f0f0;
-      --fg-2:          #a0a0a0;
-      --fg-3:          #505050;
-      --btn-bg:        #f0f0f0;
-      --btn-fg:        #080808;
-      --btn-hov:       #d8d8d8;
-      --btn-ghost-fg:  #f0f0f0;
-      --btn-ghost-border: #303030;
-      --btn-ghost-hov: #1f1f1f;
-      --logo:          url("techbacked_white.png");
-      --logo-alt:      url("techbacked_black.png");
-      --hero-glow:     radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 70%);
-      --line:          #1f1f1f;
+      --bg:              #070707;
+      --bg-2:            #0e0e0e;
+      --bg-nav:          rgba(7, 7, 7, 0.88);
+      --bg-card:         #111111;
+      --bg-card-hov:     #161616;
+      --border:          #1e1e1e;
+      --border-hover:    #333;
+      --fg:              #efefef;
+      --fg-2:            #888;
+      --fg-3:            #3a3a3a;
+      --btn-bg:          #efefef;
+      --btn-fg:          #070707;
+      --btn-hov:         #d4d4d4;
+      --btn-ghost-fg:    #efefef;
+      --btn-ghost-b:     #2a2a2a;
+      --btn-ghost-hov:   #141414;
+      --line:            #1a1a1a;
+      --dot:             #1c1c1c;
+      --glow-color:      rgba(255,255,255,0.03);
+      --cursor-color:    rgba(255,255,255,0.06);
+      --invert-bg:       #efefef;
+      --invert-fg:       #070707;
+      --invert-muted:    #666;
     }
 
     [data-theme="light"] {
-      --bg:            #fafafa;
-      --bg-2:          #f2f2f2;
-      --bg-nav:        rgba(250, 250, 250, 0.92);
-      --bg-card:       #ffffff;
-      --bg-card-hov:   #f7f7f7;
-      --border:        #e8e8e8;
-      --border-subtle: #f0f0f0;
-      --fg:            #0a0a0a;
-      --fg-2:          #555555;
-      --fg-3:          #aaaaaa;
-      --btn-bg:        #0a0a0a;
-      --btn-fg:        #fafafa;
-      --btn-hov:       #333333;
-      --btn-ghost-fg:  #0a0a0a;
-      --btn-ghost-border: #d0d0d0;
-      --btn-ghost-hov: #f2f2f2;
-      --logo:          url("techbacked_black.png");
-      --logo-alt:      url("techbacked_white.png");
-      --hero-glow:     radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,0,0,0.03) 0%, transparent 70%);
-      --line:          #e8e8e8;
+      --bg:              #f9f9f7;
+      --bg-2:            #f1f1ef;
+      --bg-nav:          rgba(249, 249, 247, 0.92);
+      --bg-card:         #ffffff;
+      --bg-card-hov:     #f5f5f3;
+      --border:          #e4e4e0;
+      --border-hover:    #aaa;
+      --fg:              #0a0a0a;
+      --fg-2:            #666;
+      --fg-3:            #bbb;
+      --btn-bg:          #0a0a0a;
+      --btn-fg:          #f9f9f7;
+      --btn-hov:         #2a2a2a;
+      --btn-ghost-fg:    #0a0a0a;
+      --btn-ghost-b:     #d4d4d0;
+      --btn-ghost-hov:   #f0f0ee;
+      --line:            #e4e4e0;
+      --dot:             #d8d8d4;
+      --glow-color:      rgba(0,0,0,0.02);
+      --cursor-color:    rgba(0,0,0,0.04);
+      --invert-bg:       #0a0a0a;
+      --invert-fg:       #efefef;
+      --invert-muted:    #999;
     }
 
+    /* ── BASE ── */
     html { scroll-behavior: smooth; }
 
     body {
@@ -64,8 +72,49 @@
       color: var(--fg);
       font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.35s, color 0.35s;
       overflow-x: hidden;
+    }
+
+    /* ── DOT GRID BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: radial-gradient(circle, var(--dot) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    /* everything sits above texture */
+    nav, main, footer, .strip, .statement-section, #contact { position: relative; z-index: 2; }
+
+    /* ── CURSOR GLOW ── */
+    #cursor-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--cursor-color) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 3;
+      transform: translate(-50%, -50%);
+      transition: background 0.35s;
+      will-change: transform;
     }
 
     /* ── LOGO SWAP ── */
@@ -83,11 +132,11 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 56px;
-      height: 68px;
+      height: 64px;
       background: var(--bg-nav);
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(24px) saturate(180%);
       border-bottom: 1px solid var(--border);
-      transition: background 0.3s, border-color 0.3s;
+      transition: background 0.35s, border-color 0.35s;
     }
 
     .nav-brand {
@@ -98,25 +147,25 @@
       color: var(--fg);
     }
 
-    .nav-brand img { width: 28px; height: 28px; }
+    .nav-brand img { width: 26px; height: 26px; }
 
     .nav-brand-name {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
     }
 
     .nav-center {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 36px;
       list-style: none;
     }
 
     .nav-center a {
       color: var(--fg-2);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       letter-spacing: -0.01em;
       transition: color 0.2s;
@@ -124,186 +173,254 @@
 
     .nav-center a:hover { color: var(--fg); }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .nav-right { display: flex; align-items: center; gap: 8px; }
 
     .toggle-btn {
       background: none;
-      border: 1px solid var(--btn-ghost-border);
+      border: 1px solid var(--btn-ghost-b);
       border-radius: 8px;
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
+      font-size: 14px;
       transition: background 0.2s, border-color 0.2s;
-      color: var(--fg);
     }
 
-    .toggle-btn:hover {
-      background: var(--btn-ghost-hov);
-      border-color: var(--fg-3);
-    }
+    .toggle-btn:hover { background: var(--btn-ghost-hov); border-color: var(--border-hover); }
 
-    .contact-btn {
+    .cta-nav {
       background: var(--btn-bg);
       color: var(--btn-fg);
       border: none;
       border-radius: 8px;
-      padding: 0 18px;
-      height: 34px;
-      font-size: 13px;
-      font-weight: 600;
+      padding: 0 16px;
+      height: 32px;
+      font-size: 12px;
+      font-weight: 700;
       cursor: pointer;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      letter-spacing: -0.01em;
+      letter-spacing: 0.01em;
       transition: background 0.2s;
     }
 
-    .contact-btn:hover { background: var(--btn-hov); }
+    .cta-nav:hover { background: var(--btn-hov); }
+
+    /* ── SCROLL FADE ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
+      min-height: 100svh;
       display: grid;
       place-items: center;
-      padding: 68px 56px 0;
-      background: var(--hero-glow), var(--bg);
+      padding: 64px 56px 0;
       position: relative;
     }
 
+    .hero-glow {
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse, var(--glow-color) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
     .hero-inner {
-      max-width: 960px;
+      max-width: 880px;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 0;
     }
 
     .hero-logo-wrap {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 52px;
+      width: 88px;
+      height: 88px;
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .hero-logo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .hero-logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
 
-    .hero-label {
+    .hero-eyebrow {
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
+      font-weight: 700;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--fg-3);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .hero-headline {
-      font-size: clamp(44px, 8vw, 96px);
+      font-size: clamp(48px, 9vw, 104px);
       font-weight: 900;
       letter-spacing: -0.05em;
-      line-height: 0.95;
-      margin-bottom: 36px;
+      line-height: 0.93;
+      margin-bottom: 32px;
       color: var(--fg);
     }
 
-    .hero-headline .muted { color: var(--fg-2); font-weight: 300; }
-
-    .hero-sub {
-      font-size: clamp(16px, 2vw, 19px);
+    .hero-headline .dim {
       color: var(--fg-2);
-      max-width: 480px;
-      line-height: 1.7;
-      font-weight: 400;
-      margin-bottom: 52px;
+      font-weight: 300;
     }
 
-    .hero-actions {
+    .hero-sub {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: var(--fg-2);
+      max-width: 420px;
+      line-height: 1.75;
+      font-weight: 400;
+      margin-bottom: 48px;
+    }
+
+    .hero-btns {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
       justify-content: center;
+      margin-bottom: 80px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
+      gap: 7px;
+      padding: 13px 24px;
       border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 700;
       letter-spacing: -0.01em;
       text-decoration: none;
-      transition: background 0.2s, transform 0.15s, border-color 0.2s;
+      transition: background 0.2s, transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
     }
 
-    .btn:hover { transform: translateY(-1px); }
+    .btn:hover { transform: translateY(-2px); }
 
     .btn-solid {
       background: var(--btn-bg);
       color: var(--btn-fg);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
 
-    .btn-solid:hover { background: var(--btn-hov); }
+    .btn-solid:hover { background: var(--btn-hov); box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
 
     .btn-ghost {
       background: transparent;
       color: var(--btn-ghost-fg);
-      border: 1px solid var(--btn-ghost-border);
+      border: 1px solid var(--btn-ghost-b);
     }
 
-    .btn-ghost:hover {
-      background: var(--btn-ghost-hov);
-      border-color: var(--fg-3);
-    }
+    .btn-ghost:hover { background: var(--btn-ghost-hov); border-color: var(--border-hover); }
 
-    .hero-scroll {
-      margin-top: 96px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
+    .hero-scroll-hint {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--fg-3);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      animation: bob 2.5s ease-in-out infinite;
     }
 
-    .hero-scroll::before,
-    .hero-scroll::after {
+    .hero-scroll-hint::before,
+    .hero-scroll-hint::after {
       content: '';
       display: block;
-      width: 40px;
+      width: 36px;
       height: 1px;
       background: var(--fg-3);
     }
 
-    /* ── SECTION BASE ── */
-    .section {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 120px 56px;
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(4px); }
     }
+
+    /* ── STRIP ── */
+    .strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .strip-track {
+      display: inline-flex;
+      gap: 56px;
+      animation: marquee 28s linear infinite;
+    }
+
+    .strip-item {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+      flex-shrink: 0;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+
+    .section { padding: 120px 0; }
 
     .section-tag {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--fg-3);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .section-tag::after {
@@ -316,76 +433,39 @@
 
     .section-h {
       font-size: clamp(32px, 4.5vw, 56px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.08;
-      margin-bottom: 20px;
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 1.04;
+      margin-bottom: 18px;
     }
 
     .section-p {
-      font-size: 18px;
+      font-size: 17px;
       color: var(--fg-2);
-      max-width: 520px;
-      line-height: 1.75;
+      max-width: 500px;
+      line-height: 1.8;
       margin-bottom: 64px;
-    }
-
-    hr.rule {
-      border: none;
-      border-top: 1px solid var(--line);
-    }
-
-    /* ── MARQUEE STRIP ── */
-    .strip {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 18px 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .strip-inner {
-      display: inline-flex;
-      gap: 64px;
-      animation: marquee 24s linear infinite;
-    }
-
-    .strip-item {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--fg-3);
-      flex-shrink: 0;
-    }
-
-    .strip-dot {
-      color: var(--fg-3);
-    }
-
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
     }
 
     /* ── SERVICES ── */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
+      border: 1px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
+      background: var(--border);
+      gap: 1px;
     }
 
     .service-card {
       background: var(--bg);
-      padding: 48px 40px;
-      transition: background 0.2s;
+      padding: 44px 36px;
       display: flex;
       flex-direction: column;
       gap: 0;
+      transition: background 0.25s;
+      cursor: default;
     }
 
     .service-card:hover { background: var(--bg-card); }
@@ -395,80 +475,91 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       color: var(--fg-3);
-      margin-bottom: 36px;
+      margin-bottom: 32px;
+      font-variant-numeric: tabular-nums;
     }
 
     .service-icon {
-      font-size: 28px;
-      margin-bottom: 24px;
+      font-size: 26px;
+      margin-bottom: 20px;
       line-height: 1;
     }
 
     .service-card h3 {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.035em;
       margin-bottom: 12px;
     }
 
     .service-card p {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--fg-2);
-      line-height: 1.75;
-      flex: 1;
+      line-height: 1.8;
     }
 
-    /* ── STATEMENT ── */
+    /* ── STATEMENT BAND ── */
     .statement-section {
-      background: var(--fg);
-      color: var(--bg);
-      padding: 120px 56px;
+      background: var(--invert-bg);
+      color: var(--invert-fg);
+      padding: 112px 56px;
     }
 
-    .statement-inner {
-      max-width: 1120px;
-      margin: 0 auto;
+    .statement-inner { max-width: 1100px; margin: 0 auto; }
+
+    .statement-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--invert-muted);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
-    .statement-inner .section-tag { color: rgba(0,0,0,0.35); }
-    [data-theme="light"] .statement-inner .section-tag { color: rgba(255,255,255,0.4); }
-    .statement-inner .section-tag::after { background: rgba(0,0,0,0.15); }
-    [data-theme="light"] .statement-inner .section-tag::after { background: rgba(255,255,255,0.2); }
+    .statement-tag::after {
+      content: '';
+      display: block;
+      flex: 1;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.2;
+    }
 
-    .statement-text {
-      font-size: clamp(28px, 4vw, 52px);
+    .statement-quote {
+      font-size: clamp(26px, 4vw, 52px);
       font-weight: 800;
       letter-spacing: -0.04em;
       line-height: 1.1;
-      max-width: 800px;
-      color: var(--bg);
+      max-width: 780px;
+      color: var(--invert-fg);
     }
 
-    [data-theme="light"] .statement-section {
-      background: var(--fg);
-      color: var(--bg);
+    .statement-quote .hl {
+      opacity: 0.4;
+      font-weight: 300;
     }
-
-    [data-theme="light"] .statement-text { color: var(--bg); }
 
     /* ── PILLARS ── */
     .pillars-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
+      border: 1px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
+      background: var(--border);
+      gap: 1px;
     }
 
     .pillar {
       background: var(--bg);
-      padding: 56px 48px;
+      padding: 52px 44px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      transition: background 0.2s;
+      gap: 14px;
+      transition: background 0.25s;
     }
 
     .pillar:hover { background: var(--bg-card); }
@@ -476,23 +567,22 @@
     .pillar-label {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--fg-3);
     }
 
     .pillar h3 {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
       letter-spacing: -0.04em;
       line-height: 1.1;
     }
 
     .pillar p {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--fg-2);
-      line-height: 1.75;
-      max-width: 380px;
+      line-height: 1.8;
     }
 
     /* ── CONTACT ── */
@@ -501,158 +591,261 @@
       border-top: 1px solid var(--line);
     }
 
-    .contact-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 120px 56px;
+    .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 96px;
+      gap: 80px;
       align-items: start;
+      padding: 120px 0;
     }
 
     .contact-left h2 {
       font-size: clamp(32px, 4vw, 52px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      margin-bottom: 20px;
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 1.04;
+      margin-bottom: 18px;
     }
 
-    .contact-left p {
+    .contact-left > p {
       font-size: 16px;
       color: var(--fg-2);
-      line-height: 1.75;
-      margin-bottom: 40px;
+      line-height: 1.8;
+      margin-bottom: 36px;
     }
 
-    .contact-email {
+    .email-link {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-decoration: none;
       color: var(--fg);
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      border: 1px solid var(--border);
       background: var(--bg-card);
-      border-radius: 12px;
-      padding: 20px 28px;
-      transition: background 0.2s, border-color 0.2s;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 28px;
+      margin-bottom: 40px;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
     }
 
-    .contact-email:hover {
-      background: var(--bg-card-hov);
-      border-color: var(--fg-3);
-    }
+    .email-link:hover { background: var(--bg-card-hov); border-color: var(--border-hover); transform: translateY(-2px); }
 
-    .contact-email .email-icon {
-      font-size: 22px;
-      flex-shrink: 0;
-    }
+    .email-link .e-icon { font-size: 20px; }
 
-    .contact-right {
+    .email-link .e-text {
       display: flex;
       flex-direction: column;
       gap: 2px;
     }
 
-    .contact-info-item {
-      padding: 28px 0;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .contact-info-item:first-child { border-top: 1px solid var(--line); }
-
-    .contact-info-label {
-      font-size: 11px;
+    .email-link .e-label {
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--fg-3);
     }
 
-    .contact-info-value {
-      font-size: 16px;
+    .email-link .e-addr {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── FORM ── */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--fg);
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+      resize: none;
+      -webkit-appearance: none;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder { color: var(--fg-3); }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hov);
+    }
+
+    .field textarea { height: 120px; }
+
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    .field select option { background: #111; color: #eee; }
+    [data-theme="light"] .field select option { background: #fff; color: #111; }
+
+    .form-submit {
+      margin-top: 4px;
+      width: 100%;
+      font-size: 14px;
+      padding: 15px 24px;
+      justify-content: center;
+      letter-spacing: 0;
+    }
+
+    .form-status {
+      font-size: 13px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .form-status.success {
+      display: block;
+      background: rgba(74, 222, 128, 0.08);
+      border: 1px solid rgba(74, 222, 128, 0.2);
+      color: #4ade80;
+    }
+
+    .form-status.error {
+      display: block;
+      background: rgba(248, 113, 113, 0.08);
+      border: 1px solid rgba(248, 113, 113, 0.2);
+      color: #f87171;
+    }
+
+    /* ── CONTACT INFO ROWS ── */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      margin-top: 8px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      gap: 16px;
+    }
+
+    .info-row:first-child { border-top: 1px solid var(--line); }
+
+    .info-key {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+      flex-shrink: 0;
+    }
+
+    .info-val {
+      font-size: 14px;
       font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--fg);
+      text-align: right;
     }
 
-    .contact-info-value a {
-      color: var(--fg);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .contact-info-value a:hover { color: var(--fg-2); }
+    .info-val a { color: var(--fg); text-decoration: none; transition: color 0.2s; }
+    .info-val a:hover { color: var(--fg-2); }
 
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--line);
-      padding: 32px 56px;
+      padding: 28px 56px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 14px;
     }
 
     .footer-brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       text-decoration: none;
     }
 
-    .footer-brand img { width: 22px; height: 22px; }
+    .footer-brand img { width: 20px; height: 20px; }
 
-    .footer-brand span {
+    .footer-brand-name {
       font-size: 13px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-weight: 800;
+      letter-spacing: -0.03em;
       color: var(--fg);
     }
 
-    .footer-copy {
-      font-size: 12px;
-      color: var(--fg-3);
-    }
+    .footer-copy { font-size: 12px; color: var(--fg-3); }
 
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
+    .footer-links { display: flex; gap: 20px; }
 
     .footer-links a {
       font-size: 12px;
       color: var(--fg-3);
       text-decoration: none;
-      letter-spacing: 0.01em;
       transition: color 0.2s;
     }
 
     .footer-links a:hover { color: var(--fg); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 0 24px; }
+    @media (max-width: 860px) {
+      nav { padding: 0 20px; }
       .nav-center { display: none; }
-      .section { padding: 80px 24px; }
-      .hero { padding: 68px 24px 0; }
+      .hero { padding: 64px 24px 0; }
+      .container { padding: 0 24px; }
+      .section { padding: 80px 0; }
       .services-grid { grid-template-columns: 1fr; }
       .pillars-grid { grid-template-columns: 1fr; }
-      .contact-inner { grid-template-columns: 1fr; gap: 56px; padding: 80px 24px; }
-      footer { padding: 28px 24px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; padding: 80px 0; }
+      .form-row { grid-template-columns: 1fr; }
       .statement-section { padding: 80px 24px; }
+      footer { padding: 24px 20px; }
     }
   </style>
 </head>
 <body>
+
+<!-- CURSOR GLOW -->
+<div id="cursor-glow" aria-hidden="true"></div>
 
 <!-- NAV -->
 <nav>
@@ -672,192 +865,231 @@
     <button class="toggle-btn" id="themeToggle" aria-label="Toggle theme">
       <span id="themeIcon">☀️</span>
     </button>
-    <a href="#contact" class="contact-btn">Get in touch →</a>
+    <a href="#contact" class="cta-nav">Get in touch →</a>
   </div>
 </nav>
 
+<main>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-logo-wrap">
-      <img src="techbacked_white.png" alt="TechBacked" class="logo-dark" />
-      <img src="techbacked_black.png" alt="TechBacked" class="logo-light" />
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-logo-wrap reveal">
+        <img src="techbacked_white.png" alt="TechBacked logo" class="logo-dark" />
+        <img src="techbacked_black.png" alt="TechBacked logo" class="logo-light" />
+      </div>
+
+      <p class="hero-eyebrow reveal reveal-delay-1">TechBacked &nbsp;·&nbsp; Est. 2024</p>
+
+      <h1 class="hero-headline reveal reveal-delay-2">
+        Working towards<br />
+        <span class="dim">a tech backed</span><br />
+        future.
+      </h1>
+
+      <p class="hero-sub reveal reveal-delay-3">
+        We build, invest in, and accelerate technology companies — from the first line of code to market leadership.
+      </p>
+
+      <div class="hero-btns reveal reveal-delay-4">
+        <a href="#contact" class="btn btn-solid">Start a conversation</a>
+        <a href="#services" class="btn btn-ghost">What we build →</a>
+      </div>
+
+      <div class="hero-scroll-hint reveal reveal-delay-4" aria-hidden="true">Scroll to explore</div>
     </div>
+  </section>
 
-    <p class="hero-label">TechBacked &nbsp;·&nbsp; Est. 2024</p>
-
-    <h1 class="hero-headline">
-      Working towards<br />
-      <span class="muted">a tech backed</span><br />
-      future.
-    </h1>
-
-    <p class="hero-sub">
-      We build, invest in, and accelerate technology companies. From first line of code to market leadership.
-    </p>
-
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-solid">Start a conversation</a>
-      <a href="#services" class="btn btn-ghost">What we do</a>
-    </div>
-
-    <div class="hero-scroll">Scroll to explore</div>
-  </div>
-</div>
-
-
-<!-- STRIP -->
-<div class="strip">
-  <div class="strip-inner" aria-hidden="true">
-    <span class="strip-item">Product Development</span>
-    <span class="strip-dot">·</span>
-    <span class="strip-item">AI Integration</span>
-    <span class="strip-dot">·</span>
-    <span class="strip-item">Venture Building</span>
-    <span class="strip-dot">·</span>
-    <span class="strip-item">Technology Strategy</span>
-    <span class="strip-dot">·</span>
-    <span class="strip-item">Software Engineering</span>
-    <span class="strip-dot">·</span>
-    <span class="strip-item">Startup Advisory</span>
-    <span class="strip-dot">·</span>
-    <!-- duplicate for seamless loop -->
-    <span class="strip-item">Product Development</span>
-    <span class="strip-dot">·</span>
-    <span class="strip-item">AI Integration</span>
-    <span class="strip-dot">·</span>
-    <span class="strip-item">Venture Building</span>
-    <span class="strip-dot">·</span>
-    <span class="strip-item">Technology Strategy</span>
-    <span class="strip-dot">·</span>
-    <span class="strip-item">Software Engineering</span>
-    <span class="strip-dot">·</span>
-    <span class="strip-item">Startup Advisory</span>
-    <span class="strip-dot">·</span>
-  </div>
-</div>
-
-
-<!-- SERVICES -->
-<div id="services" class="section">
-  <p class="section-tag">What we do</p>
-  <h2 class="section-h">End-to-end technology.<br />Zero compromise.</h2>
-  <p class="section-p">From architecture to deployment — we build what others can't ship fast enough.</p>
-
-  <div class="services-grid">
-    <div class="service-card">
-      <span class="service-num">01</span>
-      <div class="service-icon">⚡</div>
-      <h3>Product Development</h3>
-      <p>Full-stack software engineering from architecture to production. We don't prototype — we ship. Fast, scalable, and built to last.</p>
-    </div>
-    <div class="service-card">
-      <span class="service-num">02</span>
-      <div class="service-icon">◈</div>
-      <h3>AI Integration</h3>
-      <p>Practical, production-ready AI embedded directly into your products and workflows. Not hype — measurable outcomes.</p>
-    </div>
-    <div class="service-card">
-      <span class="service-num">03</span>
-      <div class="service-icon">↗</div>
-      <h3>Venture Building</h3>
-      <p>We co-found and launch technology ventures from zero. Capital, code, and conviction — all under one roof.</p>
+  <!-- MARQUEE STRIP -->
+  <div class="strip" aria-hidden="true">
+    <div class="strip-track">
+      <span class="strip-item">Product Development</span>
+      <span class="strip-item">·</span>
+      <span class="strip-item">AI Integration</span>
+      <span class="strip-item">·</span>
+      <span class="strip-item">Venture Building</span>
+      <span class="strip-item">·</span>
+      <span class="strip-item">Technology Strategy</span>
+      <span class="strip-item">·</span>
+      <span class="strip-item">Software Engineering</span>
+      <span class="strip-item">·</span>
+      <span class="strip-item">Startup Advisory</span>
+      <span class="strip-item">·</span>
+      <span class="strip-item">Product Development</span>
+      <span class="strip-item">·</span>
+      <span class="strip-item">AI Integration</span>
+      <span class="strip-item">·</span>
+      <span class="strip-item">Venture Building</span>
+      <span class="strip-item">·</span>
+      <span class="strip-item">Technology Strategy</span>
+      <span class="strip-item">·</span>
+      <span class="strip-item">Software Engineering</span>
+      <span class="strip-item">·</span>
+      <span class="strip-item">Startup Advisory</span>
+      <span class="strip-item">·</span>
     </div>
   </div>
-</div>
 
+  <!-- SERVICES -->
+  <div id="services" class="container">
+    <div class="section">
+      <p class="section-tag reveal">Services</p>
+      <h2 class="section-h reveal reveal-delay-1">End-to-end technology.<br />Zero compromise.</h2>
+      <p class="section-p reveal reveal-delay-2">From architecture to deployment — we build what others can't ship fast enough.</p>
 
-<!-- STATEMENT -->
-<div class="statement-section">
-  <div class="statement-inner">
-    <p class="section-tag">Our belief</p>
-    <p class="statement-text">
-      The next generation of great companies will be built on technology that works for them — not against them. We're here to make that happen.
-    </p>
-  </div>
-</div>
-
-
-<!-- ABOUT -->
-<div id="about" class="section">
-  <p class="section-tag">About</p>
-  <h2 class="section-h">Built different.<br />On purpose.</h2>
-  <p class="section-p">TechBacked is founded by Meesam Gardezi — engineer, operator, and builder — with one mission: back the next wave of technology-first companies.</p>
-
-  <div class="pillars-grid">
-    <div class="pillar">
-      <span class="pillar-label">Philosophy</span>
-      <h3>Technology first. Always.</h3>
-      <p>Every decision we make starts with the technology. Great software is the foundation — everything else is built on top of it.</p>
-    </div>
-    <div class="pillar">
-      <span class="pillar-label">Approach</span>
-      <h3>Move fast. Ship right.</h3>
-      <p>Speed without quality is noise. We've refined a process that lets us move at startup velocity while building enterprise-grade systems.</p>
-    </div>
-    <div class="pillar">
-      <span class="pillar-label">Focus</span>
-      <h3>Depth over breadth.</h3>
-      <p>We don't work with everyone. We go deep with a small number of partners to ensure every engagement gets our full attention.</p>
-    </div>
-    <div class="pillar">
-      <span class="pillar-label">Vision</span>
-      <h3>The tech backed future.</h3>
-      <p>A world where the best ideas are powered by the best technology — and the people building it have the backing they deserve.</p>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <span class="service-num">01</span>
+          <div class="service-icon">⚡</div>
+          <h3>Product Development</h3>
+          <p>Full-stack engineering from architecture to production. We don't prototype — we ship. Fast, scalable, and built to last.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <span class="service-num">02</span>
+          <div class="service-icon">◈</div>
+          <h3>AI Integration</h3>
+          <p>Production-ready AI embedded directly into your products and workflows. Not hype — measurable, compounding outcomes.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <span class="service-num">03</span>
+          <div class="service-icon">↗</div>
+          <h3>Venture Building</h3>
+          <p>We co-found and launch technology ventures from zero. Capital, code, and conviction — all under one roof.</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
+  <!-- STATEMENT BAND -->
+  <div class="statement-section">
+    <div class="statement-inner">
+      <p class="statement-tag reveal">Our belief</p>
+      <p class="statement-quote reveal reveal-delay-1">
+        The next generation of great companies will be built on technology that works <span class="hl">for them — not against them.</span> We're here to make that happen.
+      </p>
+    </div>
+  </div>
 
-<hr class="rule" />
+  <!-- ABOUT / PILLARS -->
+  <div id="about" class="container">
+    <div class="section">
+      <p class="section-tag reveal">About</p>
+      <h2 class="section-h reveal reveal-delay-1">Built different.<br />On purpose.</h2>
+      <p class="section-p reveal reveal-delay-2">Founded by Meesam Gardezi — engineer, operator, and builder — with one mission: back the next wave of technology-first companies.</p>
 
+      <div class="pillars-grid">
+        <div class="pillar reveal">
+          <span class="pillar-label">Philosophy</span>
+          <h3>Technology first. Always.</h3>
+          <p>Every decision starts with the technology. Great software is the foundation — everything else is built on top of it.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-1">
+          <span class="pillar-label">Approach</span>
+          <h3>Move fast. Ship right.</h3>
+          <p>Speed without quality is noise. We've refined a process that lets us move at startup velocity while building enterprise-grade systems.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-2">
+          <span class="pillar-label">Focus</span>
+          <h3>Depth over breadth.</h3>
+          <p>We don't work with everyone. We go deep with a small number of partners to ensure every engagement gets our full attention.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-3">
+          <span class="pillar-label">Vision</span>
+          <h3>The tech backed future.</h3>
+          <p>A world where the best ideas are powered by the best technology — and the people building them have the backing they deserve.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
 
 <!-- CONTACT -->
 <div id="contact">
-  <div class="contact-inner">
-    <div class="contact-left">
-      <p class="section-tag" style="margin-bottom: 20px;">Contact</p>
-      <h2>Let's build<br />something.</h2>
-      <p>Whether you have a product to build, a company to start, or just want to talk technology — we want to hear from you.</p>
-      <a href="mailto:meesam@techbacked.ai" class="contact-email">
-        <span class="email-icon">✉</span>
-        meesam@techbacked.ai
-      </a>
-    </div>
+  <div class="container">
+    <div class="contact-grid">
 
-    <div class="contact-right">
-      <div class="contact-info-item">
-        <span class="contact-info-label">General Enquiries</span>
-        <span class="contact-info-value">
-          <a href="mailto:meesam@techbacked.ai">meesam@techbacked.ai</a>
-        </span>
+      <div class="contact-left">
+        <p class="section-tag reveal">Contact</p>
+        <h2 class="reveal reveal-delay-1">Let's build<br />something.</h2>
+        <p class="reveal reveal-delay-2">Whether you have a product to build, a company to start, or just want to talk technology — reach out directly or fill in the form.</p>
+
+        <a href="mailto:meesam@techbacked.ai" class="email-link reveal reveal-delay-2">
+          <span class="e-icon">✉</span>
+          <span class="e-text">
+            <span class="e-label">Email us directly</span>
+            <span class="e-addr">meesam@techbacked.ai</span>
+          </span>
+        </a>
+
+        <div class="contact-info reveal reveal-delay-3">
+          <div class="info-row">
+            <span class="info-key">Founder</span>
+            <span class="info-val">Meesam Gardezi</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Website</span>
+            <span class="info-val"><a href="https://meesamgardezi.com" target="_blank" rel="noopener">meesamgardezi.com</a></span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Focus</span>
+            <span class="info-val">Software · AI · Ventures</span>
+          </div>
+        </div>
       </div>
-      <div class="contact-info-item">
-        <span class="contact-info-label">Founder</span>
-        <span class="contact-info-value">Meesam Gardezi</span>
+
+      <div class="contact-right">
+        <form class="contact-form reveal reveal-delay-1" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="fname">First name</label>
+              <input type="text" id="fname" name="fname" placeholder="Meesam" autocomplete="given-name" required />
+            </div>
+            <div class="field">
+              <label for="lname">Last name</label>
+              <input type="text" id="lname" name="lname" placeholder="Gardezi" autocomplete="family-name" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" required />
+          </div>
+
+          <div class="field">
+            <label for="subject">What are you looking for?</label>
+            <select id="subject" name="subject">
+              <option value="" disabled selected>Select a topic</option>
+              <option value="product">Product Development</option>
+              <option value="ai">AI Integration</option>
+              <option value="venture">Venture Building</option>
+              <option value="advisory">Advisory</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your project, idea, or what you're trying to build…" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-solid form-submit">Send message →</button>
+
+          <div class="form-status" id="formStatus"></div>
+        </form>
       </div>
-      <div class="contact-info-item">
-        <span class="contact-info-label">Website</span>
-        <span class="contact-info-value">
-          <a href="https://meesamgardezi.com" target="_blank" rel="noopener">meesamgardezi.com</a>
-        </span>
-      </div>
-      <div class="contact-info-item">
-        <span class="contact-info-label">Focus Areas</span>
-        <span class="contact-info-value">Software · AI · Ventures</span>
-      </div>
+
     </div>
   </div>
 </div>
-
 
 <!-- FOOTER -->
 <footer>
   <a href="/" class="footer-brand">
     <img src="techbacked_white.png" alt="TechBacked" class="logo-dark" />
     <img src="techbacked_black.png" alt="TechBacked" class="logo-light" />
-    <span>TechBacked</span>
+    <span class="footer-brand-name">TechBacked</span>
   </a>
   <p class="footer-copy">© 2026 TechBacked. All rights reserved.</p>
   <div class="footer-links">
@@ -866,22 +1098,84 @@
   </div>
 </footer>
 
-
 <script>
-  const html = document.documentElement;
-  const btn  = document.getElementById('themeToggle');
-  const icon = document.getElementById('themeIcon');
+  /* ── THEME ── */
+  const html  = document.documentElement;
+  const tBtn  = document.getElementById('themeToggle');
+  const tIcon = document.getElementById('themeIcon');
 
-  function apply(theme) {
-    html.setAttribute('data-theme', theme);
-    icon.textContent = theme === 'dark' ? '☀️' : '🌙';
-    localStorage.setItem('theme', theme);
+  function applyTheme(t) {
+    html.setAttribute('data-theme', t);
+    tIcon.textContent = t === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', t);
   }
 
-  apply(localStorage.getItem('theme') === 'light' ? 'light' : 'dark');
+  applyTheme(localStorage.getItem('theme') === 'light' ? 'light' : 'dark');
+  tBtn.addEventListener('click', () => applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
 
-  btn.addEventListener('click', () => {
-    apply(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  /* ── CURSOR GLOW ── */
+  const glow = document.getElementById('cursor-glow');
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let cx = mx, cy = my;
+
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+  (function raf() {
+    cx += (mx - cx) * 0.1;
+    cy += (my - cy) * 0.1;
+    glow.style.left = cx + 'px';
+    glow.style.top  = cy + 'px';
+    requestAnimationFrame(raf);
+  })();
+
+  /* ── SCROLL REVEAL ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ── CONTACT FORM ── */
+  const form   = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    status.className = 'form-status';
+    status.textContent = '';
+
+    const data = Object.fromEntries(new FormData(form));
+
+    if (!data.fname || !data.email || !data.message) {
+      status.className = 'form-status error';
+      status.textContent = 'Please fill in your name, email, and message.';
+      return;
+    }
+
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRe.test(data.email)) {
+      status.className = 'form-status error';
+      status.textContent = 'Please enter a valid email address.';
+      return;
+    }
+
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    /* Opens the user's mail client pre-filled — replace with a real endpoint when ready */
+    const body = encodeURIComponent(
+      `Name: ${data.fname} ${data.lname || ''}\nEmail: ${data.email}\nTopic: ${data.subject || 'Not specified'}\n\n${data.message}`
+    );
+    window.location.href = `mailto:meesam@techbacked.ai?subject=TechBacked%20Enquiry&body=${body}`;
+
+    setTimeout(() => {
+      status.className = 'form-status success';
+      status.textContent = '✓ Opening your email client… If nothing happened, email meesam@techbacked.ai directly.';
+      btn.textContent = 'Send message →';
+      btn.disabled = false;
+      form.reset();
+    }, 600);
   });
 </script>
 
