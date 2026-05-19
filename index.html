@@ -3,54 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TechBacked</title>
-  <link rel="icon" type="image/png" href="techbacked_black.png" />
+  <title>TechBacked — Working Towards a Tech Backed Future</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── THEME TOKENS ── */
+    /* ── THEME ── */
     :root, [data-theme="dark"] {
-      --bg:           #0a0a0a;
-      --bg-nav:       rgba(10, 10, 10, 0.85);
-      --bg-card:      rgba(255, 255, 255, 0.03);
-      --bg-card-hov:  rgba(255, 255, 255, 0.05);
-      --bg-stat:      rgba(255, 255, 255, 0.02);
-      --bg-icon:      rgba(255, 255, 255, 0.08);
-      --border:       rgba(255, 255, 255, 0.06);
-      --border-card:  rgba(255, 255, 255, 0.06);
-      --border-btn:   rgba(255, 255, 255, 0.15);
-      --border-btn-hov: rgba(255, 255, 255, 0.4);
-      --border-badge: rgba(255, 255, 255, 0.12);
-      --glow:         rgba(255, 255, 255, 0.04);
-      --fg:           #f5f5f5;
-      --fg-muted:     #888;
-      --btn-bg:       #f5f5f5;
-      --btn-bg-hov:   #ddd;
-      --btn-fg:       #0a0a0a;
-      --logo-src:     url("techbacked_white.png");
-      --toggle-icon:  "☀️";
+      --bg:            #080808;
+      --bg-2:          #111111;
+      --bg-nav:        rgba(8, 8, 8, 0.9);
+      --bg-card:       #141414;
+      --bg-card-hov:   #1a1a1a;
+      --border:        #1f1f1f;
+      --border-subtle: #181818;
+      --fg:            #f0f0f0;
+      --fg-2:          #a0a0a0;
+      --fg-3:          #505050;
+      --btn-bg:        #f0f0f0;
+      --btn-fg:        #080808;
+      --btn-hov:       #d8d8d8;
+      --btn-ghost-fg:  #f0f0f0;
+      --btn-ghost-border: #303030;
+      --btn-ghost-hov: #1f1f1f;
+      --logo:          url("techbacked_white.png");
+      --logo-alt:      url("techbacked_black.png");
+      --hero-glow:     radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 70%);
+      --line:          #1f1f1f;
     }
 
     [data-theme="light"] {
-      --bg:           #f7f7f5;
-      --bg-nav:       rgba(247, 247, 245, 0.88);
-      --bg-card:      rgba(0, 0, 0, 0.03);
-      --bg-card-hov:  rgba(0, 0, 0, 0.05);
-      --bg-stat:      rgba(0, 0, 0, 0.02);
-      --bg-icon:      rgba(0, 0, 0, 0.07);
-      --border:       rgba(0, 0, 0, 0.07);
-      --border-card:  rgba(0, 0, 0, 0.08);
-      --border-btn:   rgba(0, 0, 0, 0.15);
-      --border-btn-hov: rgba(0, 0, 0, 0.4);
-      --border-badge: rgba(0, 0, 0, 0.1);
-      --glow:         rgba(0, 0, 0, 0.03);
-      --fg:           #0a0a0a;
-      --fg-muted:     #666;
-      --btn-bg:       #0a0a0a;
-      --btn-bg-hov:   #333;
-      --btn-fg:       #f5f5f5;
-      --logo-src:     url("techbacked_black.png");
-      --toggle-icon:  "🌙";
+      --bg:            #fafafa;
+      --bg-2:          #f2f2f2;
+      --bg-nav:        rgba(250, 250, 250, 0.92);
+      --bg-card:       #ffffff;
+      --bg-card-hov:   #f7f7f7;
+      --border:        #e8e8e8;
+      --border-subtle: #f0f0f0;
+      --fg:            #0a0a0a;
+      --fg-2:          #555555;
+      --fg-3:          #aaaaaa;
+      --btn-bg:        #0a0a0a;
+      --btn-fg:        #fafafa;
+      --btn-hov:       #333333;
+      --btn-ghost-fg:  #0a0a0a;
+      --btn-ghost-border: #d0d0d0;
+      --btn-ghost-hov: #f2f2f2;
+      --logo:          url("techbacked_black.png");
+      --logo-alt:      url("techbacked_white.png");
+      --hero-glow:     radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,0,0,0.03) 0%, transparent 70%);
+      --line:          #e8e8e8;
     }
 
     html { scroll-behavior: smooth; }
@@ -59,503 +63,827 @@
       background: var(--bg);
       color: var(--fg);
       font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      transition: background 0.25s, color 0.25s;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
     }
+
+    /* ── LOGO SWAP ── */
+    .logo-dark  { display: block; }
+    .logo-light { display: none; }
+    [data-theme="light"] .logo-dark  { display: none; }
+    [data-theme="light"] .logo-light { display: block; }
 
     /* ── NAV ── */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
+      inset: 0 0 auto 0;
+      z-index: 200;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 48px;
+      padding: 0 56px;
+      height: 68px;
       background: var(--bg-nav);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      transition: background 0.25s, border-color 0.25s;
+      transition: background 0.3s, border-color 0.3s;
     }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--fg);
-    }
-
-    .nav-logo img { width: 32px; height: 32px; }
-
-    .nav-logo span {
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--fg-muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--fg); }
-
-    .nav-cta {
-      background: var(--btn-bg) !important;
-      color: var(--btn-fg) !important;
-      padding: 8px 20px;
-      border-radius: 6px;
-      font-weight: 600 !important;
-      transition: background 0.2s !important;
-    }
-
-    .nav-cta:hover { background: var(--btn-bg-hov) !important; }
-
-    /* ── THEME TOGGLE ── */
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--border-btn);
-      border-radius: 8px;
-      width: 36px;
-      height: 36px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      transition: border-color 0.2s, background 0.2s;
-      flex-shrink: 0;
-    }
-
-    .theme-toggle:hover {
-      border-color: var(--border-btn-hov);
-      background: var(--bg-card);
-    }
-
-    /* ── LOGO IMG swap ── */
-    .logo-dark { display: block; }
-    .logo-light { display: none; }
-    [data-theme="light"] .logo-dark { display: none; }
-    [data-theme="light"] .logo-light { display: block; }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 24px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid var(--border-badge);
-      border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 13px;
-      color: var(--fg-muted);
-      margin-bottom: 40px;
-      letter-spacing: 0.03em;
-    }
-
-    .hero-badge span {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #4ade80;
-      display: inline-block;
-    }
-
-    .hero-logo { width: 96px; height: 96px; margin-bottom: 40px; }
-
-    .hero h1 {
-      font-size: clamp(40px, 7vw, 80px);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      max-width: 800px;
-      margin-bottom: 24px;
-    }
-
-    .hero h1 em { font-style: normal; color: var(--fg-muted); }
-
-    .hero p {
-      font-size: clamp(16px, 2vw, 20px);
-      color: var(--fg-muted);
-      max-width: 520px;
-      margin-bottom: 48px;
-      line-height: 1.7;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .btn-primary {
-      background: var(--btn-bg);
-      color: var(--btn-fg);
-      padding: 14px 32px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .btn-primary:hover { background: var(--btn-bg-hov); transform: translateY(-1px); }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--fg);
-      padding: 14px 32px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
-      border: 1px solid var(--border-btn);
-      transition: border-color 0.2s, transform 0.15s;
-    }
-
-    .btn-secondary:hover { border-color: var(--border-btn-hov); transform: translateY(-1px); }
-
-    /* ── DIVIDER ── */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 0;
-    }
-
-    /* ── SECTIONS ── */
-    section {
-      padding: 96px 24px;
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--fg-muted);
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 20px;
-    }
-
-    .section-sub {
-      font-size: 18px;
-      color: var(--fg-muted);
-      max-width: 560px;
-      line-height: 1.7;
-      margin-bottom: 64px;
-    }
-
-    /* ── FEATURES GRID ── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 12px;
-    }
-
-    .feature-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: 12px;
-      padding: 36px;
-      transition: background 0.2s;
-    }
-
-    .feature-card:hover { background: var(--bg-card-hov); }
-
-    .feature-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--bg-icon);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      font-size: 20px;
-    }
-
-    .feature-card h3 {
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 10px;
-    }
-
-    .feature-card p { font-size: 14px; color: var(--fg-muted); line-height: 1.7; }
-
-    /* ── STATS ── */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-    }
-
-    .stat-card {
-      background: var(--bg-stat);
-      border: 1px solid var(--border-card);
-      border-radius: 12px;
-      padding: 40px 36px;
-    }
-
-    .stat-value {
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .stat-label { font-size: 14px; color: var(--fg-muted); }
-
-    /* ── CTA ── */
-    .cta-section {
-      max-width: 1080px;
-      margin: 0 auto 96px;
-      padding: 0 24px;
-    }
-
-    .cta-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: 20px;
-      padding: 80px 48px;
-      text-align: center;
-    }
-
-    .cta-box h2 {
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-    }
-
-    .cta-box p { font-size: 18px; color: var(--fg-muted); margin-bottom: 40px; }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-logo {
+    .nav-brand {
       display: flex;
       align-items: center;
       gap: 10px;
       text-decoration: none;
-      color: var(--fg-muted);
-      font-size: 14px;
+      color: var(--fg);
     }
 
-    .footer-logo img { width: 24px; height: 24px; }
+    .nav-brand img { width: 28px; height: 28px; }
 
-    footer p { font-size: 13px; color: var(--fg-muted); }
+    .nav-brand-name {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
 
-    footer a {
-      color: var(--fg-muted);
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-center a {
+      color: var(--fg-2);
       text-decoration: none;
-      font-size: 13px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
       transition: color 0.2s;
     }
 
-    footer a:hover { color: var(--fg); }
+    .nav-center a:hover { color: var(--fg); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toggle-btn {
+      background: none;
+      border: 1px solid var(--btn-ghost-border);
+      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      transition: background 0.2s, border-color 0.2s;
+      color: var(--fg);
+    }
+
+    .toggle-btn:hover {
+      background: var(--btn-ghost-hov);
+      border-color: var(--fg-3);
+    }
+
+    .contact-btn {
+      background: var(--btn-bg);
+      color: var(--btn-fg);
+      border: none;
+      border-radius: 8px;
+      padding: 0 18px;
+      height: 34px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      letter-spacing: -0.01em;
+      transition: background 0.2s;
+    }
+
+    .contact-btn:hover { background: var(--btn-hov); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 68px 56px 0;
+      background: var(--hero-glow), var(--bg);
+      position: relative;
+    }
+
+    .hero-inner {
+      max-width: 960px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0;
+    }
+
+    .hero-logo-wrap {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 52px;
+    }
+
+    .hero-logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
+
+    .hero-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+      margin-bottom: 28px;
+    }
+
+    .hero-headline {
+      font-size: clamp(44px, 8vw, 96px);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      margin-bottom: 36px;
+      color: var(--fg);
+    }
+
+    .hero-headline .muted { color: var(--fg-2); font-weight: 300; }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 19px);
+      color: var(--fg-2);
+      max-width: 480px;
+      line-height: 1.7;
+      font-weight: 400;
+      margin-bottom: 52px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, border-color 0.2s;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-solid {
+      background: var(--btn-bg);
+      color: var(--btn-fg);
+    }
+
+    .btn-solid:hover { background: var(--btn-hov); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--btn-ghost-fg);
+      border: 1px solid var(--btn-ghost-border);
+    }
+
+    .btn-ghost:hover {
+      background: var(--btn-ghost-hov);
+      border-color: var(--fg-3);
+    }
+
+    .hero-scroll {
+      margin-top: 96px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-scroll::before,
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--fg-3);
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 120px 56px;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-tag::after {
+      content: '';
+      display: block;
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .section-h {
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .section-p {
+      font-size: 18px;
+      color: var(--fg-2);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 64px;
+    }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--line);
+    }
+
+    /* ── MARQUEE STRIP ── */
+    .strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .strip-inner {
+      display: inline-flex;
+      gap: 64px;
+      animation: marquee 24s linear infinite;
+    }
+
+    .strip-item {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+      flex-shrink: 0;
+    }
+
+    .strip-dot {
+      color: var(--fg-3);
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .service-card {
+      background: var(--bg);
+      padding: 48px 40px;
+      transition: background 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .service-card:hover { background: var(--bg-card); }
+
+    .service-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--fg-3);
+      margin-bottom: 36px;
+    }
+
+    .service-icon {
+      font-size: 28px;
+      margin-bottom: 24px;
+      line-height: 1;
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--fg-2);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    /* ── STATEMENT ── */
+    .statement-section {
+      background: var(--fg);
+      color: var(--bg);
+      padding: 120px 56px;
+    }
+
+    .statement-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .statement-inner .section-tag { color: rgba(0,0,0,0.35); }
+    [data-theme="light"] .statement-inner .section-tag { color: rgba(255,255,255,0.4); }
+    .statement-inner .section-tag::after { background: rgba(0,0,0,0.15); }
+    [data-theme="light"] .statement-inner .section-tag::after { background: rgba(255,255,255,0.2); }
+
+    .statement-text {
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      max-width: 800px;
+      color: var(--bg);
+    }
+
+    [data-theme="light"] .statement-section {
+      background: var(--fg);
+      color: var(--bg);
+    }
+
+    [data-theme="light"] .statement-text { color: var(--bg); }
+
+    /* ── PILLARS ── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .pillar {
+      background: var(--bg);
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: background 0.2s;
+    }
+
+    .pillar:hover { background: var(--bg-card); }
+
+    .pillar-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+    }
+
+    .pillar h3 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+    }
+
+    .pillar p {
+      font-size: 14px;
+      color: var(--fg-2);
+      line-height: 1.75;
+      max-width: 380px;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg-2);
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 120px 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: start;
+    }
+
+    .contact-left h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .contact-left p {
+      font-size: 16px;
+      color: var(--fg-2);
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .contact-email {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--fg);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 20px 28px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .contact-email:hover {
+      background: var(--bg-card-hov);
+      border-color: var(--fg-3);
+    }
+
+    .contact-email .email-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-info-item {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-info-item:first-child { border-top: 1px solid var(--line); }
+
+    .contact-info-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+    }
+
+    .contact-info-value {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+    }
+
+    .contact-info-value a {
+      color: var(--fg);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-info-value a:hover { color: var(--fg-2); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-brand img { width: 22px; height: 22px; }
+
+    .footer-brand span {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--fg-3);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--fg-3);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--fg); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-      footer { padding: 32px 20px; }
-      .cta-box { padding: 48px 24px; }
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-center { display: none; }
+      .section { padding: 80px 24px; }
+      .hero { padding: 68px 24px 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 56px; padding: 80px 24px; }
+      footer { padding: 28px 24px; }
+      .statement-section { padding: 80px 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="/" class="nav-logo">
-      <img src="techbacked_white.png" alt="TechBacked logo" class="logo-dark" />
-      <img src="techbacked_black.png" alt="TechBacked logo" class="logo-light" />
-      <span>TechBacked</span>
-    </a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="#what-we-do">What we do</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="mailto:meesam@techbacked.ai" class="nav-cta">Get in touch</a></li>
-      </ul>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">
-        <span id="themeIcon">☀️</span>
-      </button>
-    </div>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">
+    <img src="techbacked_white.png" alt="TechBacked" class="logo-dark" />
+    <img src="techbacked_black.png" alt="TechBacked" class="logo-light" />
+    <span class="nav-brand-name">TechBacked</span>
+  </a>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-badge"><span></span> Working towards a tech backed future</div>
-    <img src="techbacked_white.png" alt="TechBacked" class="hero-logo logo-dark" />
-    <img src="techbacked_black.png" alt="TechBacked" class="hero-logo logo-light" />
-    <h1>Technology<br /><em>that moves fast</em></h1>
-    <p>TechBacked builds products and ventures at the intersection of software, AI, and ambition.</p>
-    <div class="hero-actions">
-      <a href="mailto:meesam@techbacked.ai" class="btn-primary">Work with us</a>
-      <a href="#what-we-do" class="btn-secondary">Learn more</a>
-    </div>
+  <ul class="nav-center">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="toggle-btn" id="themeToggle" aria-label="Toggle theme">
+      <span id="themeIcon">☀️</span>
+    </button>
+    <a href="#contact" class="contact-btn">Get in touch →</a>
   </div>
+</nav>
 
-  <hr class="divider" />
 
-  <!-- WHAT WE DO -->
-  <section id="what-we-do">
-    <p class="section-label">What we do</p>
-    <h2 class="section-title">Built for builders.</h2>
-    <p class="section-sub">We design, develop, and ship technology products — from idea to production.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>Product Development</h3>
-        <p>End-to-end software development from architecture to deployment. We move fast without breaking things.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🤖</div>
-        <h3>AI Integration</h3>
-        <p>Practical AI implementation into your workflows, products, and pipelines — not just hype.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🚀</div>
-        <h3>Venture Building</h3>
-        <p>We co-found and launch new ventures from scratch. Technology is the foundation, ambition is the fuel.</p>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider" />
-
-  <!-- ABOUT -->
-  <section id="about">
-    <p class="section-label">About</p>
-    <h2 class="section-title">Backed by tech.<br />Driven by results.</h2>
-    <p class="section-sub">TechBacked is founded by Meesam Gardezi — engineer, builder, and founder.</p>
-    <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-value">01</div>
-        <div class="stat-label">Focused team, zero bloat</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">∞</div>
-        <div class="stat-label">Ideas worth building</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">AI</div>
-        <div class="stat-label">First approach to everything</div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider" />
-
-  <!-- CTA -->
-  <div class="cta-section">
-    <div class="cta-box">
-      <h2>Let's build something.</h2>
-      <p>Have a project, idea, or venture? Let's talk.</p>
-      <a href="mailto:meesam@techbacked.ai" class="btn-primary">meesam@techbacked.ai</a>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <a href="/" class="footer-logo">
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-logo-wrap">
       <img src="techbacked_white.png" alt="TechBacked" class="logo-dark" />
       <img src="techbacked_black.png" alt="TechBacked" class="logo-light" />
-      TechBacked
-    </a>
-    <p>© 2026 TechBacked. All rights reserved.</p>
-    <div style="display:flex;gap:24px;">
-      <a href="https://meesamgardezi.com">meesamgardezi.com</a>
-      <a href="mailto:meesam@techbacked.ai">Contact</a>
     </div>
-  </footer>
 
-  <script>
-    const html = document.documentElement;
-    const btn = document.getElementById('themeToggle');
-    const icon = document.getElementById('themeIcon');
+    <p class="hero-label">TechBacked &nbsp;·&nbsp; Est. 2024</p>
 
-    const DARK = 'dark';
-    const LIGHT = 'light';
+    <h1 class="hero-headline">
+      Working towards<br />
+      <span class="muted">a tech backed</span><br />
+      future.
+    </h1>
 
-    function applyTheme(theme) {
-      html.setAttribute('data-theme', theme);
-      icon.textContent = theme === DARK ? '☀️' : '🌙';
-      localStorage.setItem('theme', theme);
-    }
+    <p class="hero-sub">
+      We build, invest in, and accelerate technology companies. From first line of code to market leadership.
+    </p>
 
-    // Init: respect saved preference, otherwise default to dark
-    const saved = localStorage.getItem('theme');
-    applyTheme(saved === LIGHT ? LIGHT : DARK);
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-solid">Start a conversation</a>
+      <a href="#services" class="btn btn-ghost">What we do</a>
+    </div>
 
-    btn.addEventListener('click', () => {
-      applyTheme(html.getAttribute('data-theme') === DARK ? LIGHT : DARK);
-    });
-  </script>
+    <div class="hero-scroll">Scroll to explore</div>
+  </div>
+</div>
+
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner" aria-hidden="true">
+    <span class="strip-item">Product Development</span>
+    <span class="strip-dot">·</span>
+    <span class="strip-item">AI Integration</span>
+    <span class="strip-dot">·</span>
+    <span class="strip-item">Venture Building</span>
+    <span class="strip-dot">·</span>
+    <span class="strip-item">Technology Strategy</span>
+    <span class="strip-dot">·</span>
+    <span class="strip-item">Software Engineering</span>
+    <span class="strip-dot">·</span>
+    <span class="strip-item">Startup Advisory</span>
+    <span class="strip-dot">·</span>
+    <!-- duplicate for seamless loop -->
+    <span class="strip-item">Product Development</span>
+    <span class="strip-dot">·</span>
+    <span class="strip-item">AI Integration</span>
+    <span class="strip-dot">·</span>
+    <span class="strip-item">Venture Building</span>
+    <span class="strip-dot">·</span>
+    <span class="strip-item">Technology Strategy</span>
+    <span class="strip-dot">·</span>
+    <span class="strip-item">Software Engineering</span>
+    <span class="strip-dot">·</span>
+    <span class="strip-item">Startup Advisory</span>
+    <span class="strip-dot">·</span>
+  </div>
+</div>
+
+
+<!-- SERVICES -->
+<div id="services" class="section">
+  <p class="section-tag">What we do</p>
+  <h2 class="section-h">End-to-end technology.<br />Zero compromise.</h2>
+  <p class="section-p">From architecture to deployment — we build what others can't ship fast enough.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <div class="service-icon">⚡</div>
+      <h3>Product Development</h3>
+      <p>Full-stack software engineering from architecture to production. We don't prototype — we ship. Fast, scalable, and built to last.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <div class="service-icon">◈</div>
+      <h3>AI Integration</h3>
+      <p>Practical, production-ready AI embedded directly into your products and workflows. Not hype — measurable outcomes.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <div class="service-icon">↗</div>
+      <h3>Venture Building</h3>
+      <p>We co-found and launch technology ventures from zero. Capital, code, and conviction — all under one roof.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- STATEMENT -->
+<div class="statement-section">
+  <div class="statement-inner">
+    <p class="section-tag">Our belief</p>
+    <p class="statement-text">
+      The next generation of great companies will be built on technology that works for them — not against them. We're here to make that happen.
+    </p>
+  </div>
+</div>
+
+
+<!-- ABOUT -->
+<div id="about" class="section">
+  <p class="section-tag">About</p>
+  <h2 class="section-h">Built different.<br />On purpose.</h2>
+  <p class="section-p">TechBacked is founded by Meesam Gardezi — engineer, operator, and builder — with one mission: back the next wave of technology-first companies.</p>
+
+  <div class="pillars-grid">
+    <div class="pillar">
+      <span class="pillar-label">Philosophy</span>
+      <h3>Technology first. Always.</h3>
+      <p>Every decision we make starts with the technology. Great software is the foundation — everything else is built on top of it.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-label">Approach</span>
+      <h3>Move fast. Ship right.</h3>
+      <p>Speed without quality is noise. We've refined a process that lets us move at startup velocity while building enterprise-grade systems.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-label">Focus</span>
+      <h3>Depth over breadth.</h3>
+      <p>We don't work with everyone. We go deep with a small number of partners to ensure every engagement gets our full attention.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-label">Vision</span>
+      <h3>The tech backed future.</h3>
+      <p>A world where the best ideas are powered by the best technology — and the people building it have the backing they deserve.</p>
+    </div>
+  </div>
+</div>
+
+
+<hr class="rule" />
+
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <p class="section-tag" style="margin-bottom: 20px;">Contact</p>
+      <h2>Let's build<br />something.</h2>
+      <p>Whether you have a product to build, a company to start, or just want to talk technology — we want to hear from you.</p>
+      <a href="mailto:meesam@techbacked.ai" class="contact-email">
+        <span class="email-icon">✉</span>
+        meesam@techbacked.ai
+      </a>
+    </div>
+
+    <div class="contact-right">
+      <div class="contact-info-item">
+        <span class="contact-info-label">General Enquiries</span>
+        <span class="contact-info-value">
+          <a href="mailto:meesam@techbacked.ai">meesam@techbacked.ai</a>
+        </span>
+      </div>
+      <div class="contact-info-item">
+        <span class="contact-info-label">Founder</span>
+        <span class="contact-info-value">Meesam Gardezi</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="contact-info-label">Website</span>
+        <span class="contact-info-value">
+          <a href="https://meesamgardezi.com" target="_blank" rel="noopener">meesamgardezi.com</a>
+        </span>
+      </div>
+      <div class="contact-info-item">
+        <span class="contact-info-label">Focus Areas</span>
+        <span class="contact-info-value">Software · AI · Ventures</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-brand">
+    <img src="techbacked_white.png" alt="TechBacked" class="logo-dark" />
+    <img src="techbacked_black.png" alt="TechBacked" class="logo-light" />
+    <span>TechBacked</span>
+  </a>
+  <p class="footer-copy">© 2026 TechBacked. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="https://meesamgardezi.com" target="_blank" rel="noopener">meesamgardezi.com</a>
+    <a href="mailto:meesam@techbacked.ai">meesam@techbacked.ai</a>
+  </div>
+</footer>
+
+
+<script>
+  const html = document.documentElement;
+  const btn  = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIcon');
+
+  function apply(theme) {
+    html.setAttribute('data-theme', theme);
+    icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', theme);
+  }
+
+  apply(localStorage.getItem('theme') === 'light' ? 'light' : 'dark');
+
+  btn.addEventListener('click', () => {
+    apply(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+</script>
 
 </body>
 </html>
