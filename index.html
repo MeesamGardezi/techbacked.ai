@@ -257,9 +257,9 @@
     }
 
     .hero-logo-wrap {
-      width: 88px;
-      height: 88px;
-      margin-bottom: 48px;
+      width: 56px;
+      height: 56px;
+      margin-bottom: 20px;
       position: relative;
     }
 
@@ -276,34 +276,38 @@
 
     .hero-eyebrow {
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--fg-3);
+      color: #575757;
       margin-bottom: 24px;
     }
 
     .hero-headline {
-      font-size: clamp(48px, 9vw, 104px);
+      font-size: clamp(72px, 16vw, 180px);
       font-weight: 900;
       letter-spacing: -0.05em;
-      line-height: 0.93;
-      margin-bottom: 32px;
-      color: var(--fg);
+      line-height: 1;
+      margin-bottom: 24px;
+      color: #ffffff;
     }
 
-    .hero-headline .dim {
-      color: var(--fg-2);
-      font-weight: 300;
+    .hero-headline .headline-small {
+      display: block;
+      font-size: 0.28em;
+      font-weight: 400;
+      color: #aaaaaa;
+      letter-spacing: 0.02em;
+      line-height: 2.4;
     }
 
     .hero-sub {
-      font-size: clamp(15px, 1.8vw, 18px);
-      color: var(--fg-2);
-      max-width: 420px;
-      line-height: 1.75;
+      font-size: clamp(12px, 1.3vw, 14px);
+      color: #888888;
+      max-width: 380px;
+      line-height: 1.8;
       font-weight: 400;
-      margin-bottom: 48px;
+      margin-bottom: 32px;
     }
 
     .hero-btns {
@@ -352,7 +356,7 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--fg-3);
+      color: #525252;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -365,7 +369,7 @@
       display: block;
       width: 36px;
       height: 1px;
-      background: var(--fg-3);
+      background: #3a3a3a;
     }
 
     @keyframes bob {
@@ -643,7 +647,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--fg-3);
+      color: #606060;
     }
 
     .email-link .e-addr {
@@ -676,7 +680,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--fg-3);
+      color: #606060;
     }
 
     .field input,
@@ -696,7 +700,7 @@
     }
 
     .field input::placeholder,
-    .field textarea::placeholder { color: var(--fg-3); }
+    .field textarea::placeholder { color: #4a4a4a; }
 
     .field input:focus,
     .field textarea:focus,
@@ -771,7 +775,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--fg-3);
+      color: #606060;
       flex-shrink: 0;
     }
 
@@ -883,9 +887,9 @@
       <p class="hero-eyebrow reveal reveal-delay-1">TechBacked &nbsp;·&nbsp; Est. 2024</p>
 
       <h1 class="hero-headline reveal reveal-delay-2">
-        Working towards<br />
-        <span class="dim">a tech backed</span><br />
-        future.
+        <span class="headline-small">Working towards a</span>
+        techbacked
+        <span class="headline-small">future.</span>
       </h1>
 
       <p class="hero-sub reveal reveal-delay-3">
