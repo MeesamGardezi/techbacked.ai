@@ -55,7 +55,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #606060;
+  color: var(--fg-3);
 }
 
 .email-link .e-addr {
@@ -87,7 +87,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #606060;
+  color: var(--fg-3);
 }
 
 .field input,
@@ -107,7 +107,7 @@
 }
 
 .field input::placeholder,
-.field textarea::placeholder { color: #4a4a4a; }
+.field textarea::placeholder { color: var(--fg-3); }
 
 .field input:focus,
 .field textarea:focus,
@@ -126,7 +126,7 @@
   cursor: pointer;
 }
 
-.field select option { background: #111111; color: #eeeeee; }
+.field select option { background: var(--bg-card); color: var(--fg); }
 [data-theme="light"] .field select option { background: #ffffff; color: #111111; }
 
 .form-submit {
@@ -181,7 +181,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #606060;
+  color: var(--fg-3);
   flex-shrink: 0;
 }
 

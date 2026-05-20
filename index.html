@@ -8,6 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/nav.css" />
+  <link rel="stylesheet" href="styles/hero.css" />
+  <link rel="stylesheet" href="styles/sections.css" />
+  <link rel="stylesheet" href="styles/contact-footer.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -18,50 +23,50 @@
       --bg-nav:          rgba(7, 7, 7, 0.88);
       --bg-card:         #111111;
       --bg-card-hov:     #161616;
-      --border:          #1e1e1e;
-      --border-hover:    #333;
-      --fg:              #efefef;
-      --fg-2:            #888;
-      --fg-3:            #3a3a3a;
-      --btn-bg:          #efefef;
+      --border:          #242424;
+      --border-hover:    #3a3a3a;
+      --fg:              #ffffff;
+      --fg-2:            #999999;
+      --fg-3:            #555555;
+      --btn-bg:          #ffffff;
       --btn-fg:          #070707;
       --btn-hov:         #d4d4d4;
-      --btn-ghost-fg:    #efefef;
+      --btn-ghost-fg:    #ffffff;
       --btn-ghost-b:     #2a2a2a;
       --btn-ghost-hov:   #141414;
-      --line:            #1a1a1a;
+      --line:            #1e1e1e;
       --dot:             #1c1c1c;
-      --glow-color:      rgba(255,255,255,0.03);
+      --glow-color:      rgba(255,255,255,0.04);
       --cursor-color:    rgba(255,255,255,0.06);
-      --invert-bg:       #efefef;
+      --invert-bg:       #f0f0ee;
       --invert-fg:       #070707;
       --invert-muted:    #666;
     }
 
     [data-theme="light"] {
-      --bg:              #f9f9f7;
-      --bg-2:            #f1f1ef;
-      --bg-nav:          rgba(249, 249, 247, 0.92);
+      --bg:              #f8f8f6;
+      --bg-2:            #f0f0ee;
+      --bg-nav:          rgba(248, 248, 246, 0.92);
       --bg-card:         #ffffff;
-      --bg-card-hov:     #f5f5f3;
-      --border:          #e4e4e0;
-      --border-hover:    #aaa;
+      --bg-card-hov:     #f4f4f2;
+      --border:          #d8d8d4;
+      --border-hover:    #888888;
       --fg:              #0a0a0a;
-      --fg-2:            #666;
-      --fg-3:            #bbb;
+      --fg-2:            #555555;
+      --fg-3:            #808080;
       --btn-bg:          #0a0a0a;
-      --btn-fg:          #f9f9f7;
+      --btn-fg:          #f8f8f6;
       --btn-hov:         #2a2a2a;
       --btn-ghost-fg:    #0a0a0a;
-      --btn-ghost-b:     #d4d4d0;
-      --btn-ghost-hov:   #f0f0ee;
-      --line:            #e4e4e0;
-      --dot:             #d8d8d4;
-      --glow-color:      rgba(0,0,0,0.02);
+      --btn-ghost-b:     #c0c0bc;
+      --btn-ghost-hov:   #ebebea;
+      --line:            #d8d8d4;
+      --dot:             #c8c8c4;
+      --glow-color:      rgba(0,0,0,0.05);
       --cursor-color:    rgba(0,0,0,0.04);
       --invert-bg:       #0a0a0a;
-      --invert-fg:       #efefef;
-      --invert-muted:    #999;
+      --invert-fg:       #f0f0ee;
+      --invert-muted:    #888;
     }
 
     /* ── BASE ── */
@@ -86,18 +91,6 @@
       background-size: 28px 28px;
       pointer-events: none;
       opacity: 0.55;
-    }
-
-    /* ── NOISE OVERLAY ── */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-size: 256px 256px;
     }
 
     /* everything sits above texture */
@@ -279,7 +272,7 @@
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #575757;
+      color: var(--fg-3);
       margin-bottom: 24px;
     }
 
@@ -289,21 +282,21 @@
       letter-spacing: -0.05em;
       line-height: 1;
       margin-bottom: 24px;
-      color: #ffffff;
+      color: var(--fg);
     }
 
     .hero-headline .headline-small {
       display: block;
       font-size: 0.28em;
       font-weight: 400;
-      color: #aaaaaa;
+      color: var(--fg-2);
       letter-spacing: 0.02em;
       line-height: 2.4;
     }
 
     .hero-sub {
       font-size: clamp(12px, 1.3vw, 14px);
-      color: #888888;
+      color: var(--fg-2);
       max-width: 380px;
       line-height: 1.8;
       font-weight: 400;
@@ -356,7 +349,7 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #525252;
+      color: var(--fg-3);
       display: flex;
       align-items: center;
       gap: 12px;
@@ -369,7 +362,7 @@
       display: block;
       width: 36px;
       height: 1px;
-      background: #3a3a3a;
+      background: var(--border-hover);
     }
 
     @keyframes bob {
@@ -647,7 +640,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #606060;
+      color: var(--fg-3);
     }
 
     .email-link .e-addr {
@@ -680,7 +673,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #606060;
+      color: var(--fg-3);
     }
 
     .field input,
@@ -700,7 +693,7 @@
     }
 
     .field input::placeholder,
-    .field textarea::placeholder { color: #4a4a4a; }
+    .field textarea::placeholder { color: var(--fg-3); }
 
     .field input:focus,
     .field textarea:focus,
@@ -719,7 +712,7 @@
       cursor: pointer;
     }
 
-    .field select option { background: #111; color: #eee; }
+    .field select option { background: var(--bg-card); color: var(--fg); }
     [data-theme="light"] .field select option { background: #fff; color: #111; }
 
     .form-submit {
@@ -775,7 +768,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #606060;
+      color: var(--fg-3);
       flex-shrink: 0;
     }
 
